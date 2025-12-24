@@ -23,7 +23,7 @@ app.get("/gift", function (req, res) {
     res.end(`<h1>Siz sovgalar bolimidasiz</h1>`);
 });
 */
-app.post("/create-item", (req, res) => {
+app.post("/create-item", (req, res) => { //shu yerga cre-item ga post qilib beradi
     console.log(req.body);
     res.json({test: "success" });
 }); //bu res.json shaklda ma'lumotni qaytarish
