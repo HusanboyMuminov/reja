@@ -3,9 +3,9 @@ const express = require("express");
 const app = express();
 const http = require("http");
 //1 kirish code 
-app.use(express.static("public"));
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.static("public"));  //serverdagi ma'lumotni ochiq ya'ni public qilib beradi
+app.use(express.json()); // json formatdagi ma'liumotni objectga o'girib berish-vazifa.
+app.use(express.urlencoded({extended: true}));//html formdagi datalarni qabul qilish u-n yozilishi shart bu. harid.ejs ni bog'lash uchun bu yerda 
 
 //2 Session code
 
@@ -17,24 +17,23 @@ app.set("view engine", "ejs");
 //4: Routing code
 /*
 app.get("/hello", function (req, res) {
-    res.end(`<h1>HELLO WORLD</h1>`);
+    res.end(`<h1>HELLO WORLD</h1>`); //localhost:3000/hello desak hello world korinadi
 });
-app.get("/gift", function (req, res) {
+app.get("/gift", function (req, res) { //localhost:3000/gift desak siz sovgalar bmidasiz korinadi
     res.end(`<h1>Siz sovgalar bolimidasiz</h1>`);
 });
 */
 app.post("/create-item", (req, res) => { //shu yerga cre-item ga post qilib beradi
-    console.log(req.body);
+    console.log(req.body);//post>datani olib keladi va databasega shu datani yozadi
     res.json({test: "success" });
-}); //bu res.json shaklda ma'lumotni qaytarish
+}); //bu res.json shaklda ma'lumotni qaytarib yuboradi bizga
 
 
-app.get("/", function (req, res) {
-    res.render("harid");
+app.get("/", function (req, res) {// get> datani olish u-n, o'qish u-n
+    res.render("harid"); //bu harid harid.esj file b-n bog'lanadi, shu file nomi kiritildi
 });
 
-
-const server = http.createServer(app);
+const server = http.createServer(app); //serverga chiqarish vazifasini bajaradi bu qism
 let PORT = 3000;
 server.listen(PORT, function () {
     console.log(`The server is running successfully on port: ${PORT}`);
