@@ -1,3 +1,37 @@
+//A-TASK:
+
+
+function letterNumber (letter, word) {
+  let count = 0;
+  for (let i = 0; i < word.length; i++) {  //i = i + 1;
+  if (word[i] === letter) { count++; }  
+  }
+  return count;
+}
+
+console.log(letterNumber("m", "muminov"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 console.log("Jack Ma maslahatlari");
 const list = [
