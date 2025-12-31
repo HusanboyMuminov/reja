@@ -38,16 +38,39 @@ app.get("/gift", function (req, res) { //localhost:3000/gift desak siz sovgalar 
 });
 */
 app.post("/create-item", (req, res) => { //shu yerga cre-item ga post qilib beradi
-   // console.log(req.body);//post>datani olib keladi va databasega shu datani yozadi
-   // res.json({test: "success" });
-}); //bu res.json shaklda ma'lumotni qaytarib yuboradi bizga
+    console.log('user entered /create-item'); //har bir APIga borganda shuni korsatadi
+    console.log(req.body);//post>datani olib keladi va databasega shu datani yozadi
+    const new_reja = req.body.reja;
+    db.collection("plans").insertOne({ reja: new_reja }, (err, data) => {
+    if (err) {
+        console.log(err);
+        res.end("something went wrong");
+    } else {
+        res.end("successfully added");
+    }
+    });
+    });
+    // res.json({"success" }); websitega ITni o'rganamiz dib yozsek, terminalda shu gap ko'rinadi
+//}): //bu res.json shaklda ma'lumotni qaytarib yuboradi bizga
         
 // app.get('/author', (req, res) => {
 //     res.render("author", { user: user });
 // });
 
 app.get("/", function (req, res) {// get> datani olish u-n, o'qish u-n
-    res.render("reja"); //bu harid harid.esj file b-n bog'lanadi, shu file nomi kiritildi
+    console.log('user entered /'); //har bir APIga borganda shuni korsatadi
+   db.collection("plans") //CRUD operatsiyasi shu yerda ishlayapti
+   .find()
+   .toArray((err, data) => {
+    if (err) {
+        console.log(err);
+        res.end("something went wrong");
+    } else {
+            // console.log(data);
+             res.render("reja", {items: data}); //bu harid harid.esj file b-n bog'lanadi, shu file nomi kiritildi
+    }
+   });
+   
 });
 
 // const server = http.createServer(app); //serverga chiqarish vazifasini bajaradi bu qism
