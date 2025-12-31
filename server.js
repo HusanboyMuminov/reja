@@ -38,16 +38,17 @@ app.post("/create-item", (req, res) => { //shu yerga cre-item ga post qilib bera
    // res.json({test: "success" });
 }); //bu res.json shaklda ma'lumotni qaytarib yuboradi bizga
         
-app.get('/author', (req, res) => {
-    res.render("author", { user: user });
-});
+// app.get('/author', (req, res) => {
+//     res.render("author", { user: user });
+// });
 
 app.get("/", function (req, res) {// get> datani olish u-n, o'qish u-n
-    res.render("harid"); //bu harid harid.esj file b-n bog'lanadi, shu file nomi kiritildi
+    res.render("reja"); //bu harid harid.esj file b-n bog'lanadi, shu file nomi kiritildi
 });
 
 const server = http.createServer(app); //serverga chiqarish vazifasini bajaradi bu qism
 let PORT = 3000;
 server.listen(PORT, function () {
-    console.log(`The server is running successfully on port: ${PORT}`);
+    console.log(`The server is running successfully on port: ${PORT}, http://localhost:${PORT}`);
 });
+

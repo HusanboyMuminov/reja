@@ -1,6 +1,7 @@
 {
   "name": "reja",
   "version": "1.0.0",
+  "private":true,
   "description": "bu bizning birinchi loyihamiz",
   "main": "server.js",
   "scripts": {
