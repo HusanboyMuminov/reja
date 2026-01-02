@@ -42,12 +42,15 @@ app.post("/create-item", (req, res) => { //shu yerga cre-item ga post qilib bera
     console.log(req.body);//post>datani olib keladi va databasega shu datani yozadi
     const new_reja = req.body.reja;
     db.collection("plans").insertOne({ reja: new_reja }, (err, data) => {
-    if (err) {
-        console.log(err);
-        res.end("something went wrong");
-    } else {
-        res.end("successfully added");
-    }
+    // if (err) { 
+    //     console.log(err);
+    //     res.end("something went wrong");
+    // } else {
+    //     res.end("successfully added");
+    // }
+console.log(data.ops);
+res.json(data.ops[0]);
+
     });
     });
     // res.json({"success" }); websitega ITni o'rganamiz dib yozsek, terminalda shu gap ko'rinadi
