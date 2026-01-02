@@ -7,7 +7,7 @@ const app = express();
 
 //MongoDB chaqirish
 const db = require("./server").db(); //bu qism orqali databasega ma'lumot qoshish o'chirish olish amallarini amalga oshirishimiz m-m
-
+const mongodb = require("mongodb");
 // let user;
 // fs.readFile("database/user.json", "utf8", (err, data) => {
 //     if(err) {
@@ -48,10 +48,20 @@ app.post("/create-item", (req, res) => { //shu yerga cre-item ga post qilib bera
     // } else {
     //     res.end("successfully added");
     // }
-console.log(data.ops);
+//console.log(data.ops);
 res.json(data.ops[0]);
 
     });
+    });
+
+
+    app.post("/delete-item", (req, res) => {
+     const id = req.body.id;
+    // console.log(id);
+     //res.end("done");
+     db.collection("plans").deleteOne({_id: new mongodb.ObjectId(id)}, function(err, data) {
+        res.json({state: "success"})
+     })
     });
     // res.json({"success" }); websitega ITni o'rganamiz dib yozsek, terminalda shu gap ko'rinadi
 //}): //bu res.json shaklda ma'lumotni qaytarib yuboradi bizga
@@ -73,7 +83,6 @@ app.get("/", function (req, res) {// get> datani olish u-n, o'qish u-n
              res.render("reja", {items: data}); //bu harid harid.esj file b-n bog'lanadi, shu file nomi kiritildi
     }
    });
-   
 });
 
 // const server = http.createServer(app); //serverga chiqarish vazifasini bajaradi bu qism

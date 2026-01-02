@@ -1,15 +1,76 @@
-//A-TASK:
+//task C
 
-
-function letterNumber (letter, word) {
-  let count = 0;
-  for (let i = 0; i < word.length; i++) {  //i = i + 1;
-  if (word[i] === letter) { count++; }  
+class Fruits {
+  constructor(apple, apricot, cherry) {
+    this.apple = apple;
+    this.apricot = apricot;
+    this.cherry = cherry;
   }
-  return count;
+
+  // hozirgi vaqtni olish uchun yordamchi metod
+  getTime() {
+    const now = new Date();
+    const hour = String(now.getHours()).padStart(2, '0');
+    const minute = String(now.getMinutes()).padStart(2, '0');
+    return ${hour}:${minute};
+  }
+
+  qoldiq() {
+    console.log(
+      Hozir ${this.getTime()}da ${this.apple}ta apple, ${this.apricot}ta apricot va ${this.cherry}ta cherry mavjud
+    );
+  }
+
+  sotish(nomi, soni) {
+    if (!this[nomi]) {
+      console.log(`Bunday mahsulot mavjud emas`);
+      return;
+    }
+
+    if (this[nomi] < soni) {
+      console.log(`Yetarli ${nomi} yoq`);
+      return;
+    }
+
+    this[nomi] -= soni;
+    console.log(`${this.getTime()}da ${soni}ta ${nomi} sotildi`);
+  }
+
+  qabul(nomi, soni) {
+    if (!this[nomi]) {
+      console.log(`Bunday mahsulot mavjud emas`);
+      return;
+    }
+
+    this[nomi] += soni;
+    console.log(`${this.getTime()}da ${soni}ta ${nomi} qabul qilindi`);
+  }
 }
 
-console.log(letterNumber("m", "muminov"));
+
+
+
+
+
+
+
+
+
+
+
+
+// //A-TASK:
+
+
+// function letterNumber (letter, word) {
+//   let count = 0;
+//   for (let i = 0; i < word.length; i++) {  //i = i + 1;
+//   if (word[i] === letter) { count++; }  
+//   }
+//   return count;
+// }
+
+// console.log(letterNumber("m", "muminov"));
 
 
 

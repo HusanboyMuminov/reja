@@ -32,3 +32,33 @@ axios //app.jsda tradional post shaklida yozilgandi, lekin axios modern request 
     console.log("Iltimos qaytadan harakat qiling!");
 });
 });
+
+document.addEventListener("click", function (e) {
+    // console.log(e);
+    
+    //delete oper
+    console.log(e.target);
+    if (e.target.classList.contains("delete-me")) {
+        // alert("siz delete tugmasini bosdingiz");//fontendwebpageda click bolganda shu ko'rinadi
+        if(confirm("Aniq ochirmoqchimisiz?")) {
+            //   alert("Yes deb javob beriladi");
+        //  } else {
+         //    alert("No deb javob beriladi");
+            
+        axios
+        .post("/delete-item", { id: e.target.getAttribute("data-id")})
+        .then((response) => {
+            console.log(response.data);
+            e.target.parentElement.parentElement.remove();
+        })
+        .catch((err) => {});
+
+
+        }
+    }
+     
+    //edit oper
+     if (e.target.classList.contains("edit-me")) {
+        alert("siz edit tugmasini bosdingiz");
+    }
+})
