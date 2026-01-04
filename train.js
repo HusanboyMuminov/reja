@@ -1,51 +1,79 @@
+//task D
+
+function checkContent(a, b) {
+  if (a.length !== b.length) return false;
+
+  const name1 = a.split('').sort().join('');
+  const name2 = b.split('').sort().join('');
+
+  return name1 === name2;//
+}
+
+//checkContent("mimunov", "muminov"); // true
+//checkContent("hello", "ollhe");       // true
+//checkContent("hello", "world");       // false
+
+
+
+console.log(checkContent("muminov","mimunov"));
+console.log(checkContent("game","ggame"));
+
+
+
+
+
+
+
+
+
 //task C
 
-class Fruits {
-  constructor(apple, apricot, cherry) {
-    this.apple = apple;
-    this.apricot = apricot;
-    this.cherry = cherry;
-  }
+// class Fruits {
+//   constructor(apple, apricot, cherry) {
+//     this.apple = apple;
+//     this.apricot = apricot;
+//     this.cherry = cherry;
+//   }
 
-  // hozirgi vaqtni olish uchun yordamchi metod
-  getTime() {
-    const now = new Date();
-    const hour = String(now.getHours()).padStart(2, '0');
-    const minute = String(now.getMinutes()).padStart(2, '0');
-    return ${hour}:${minute};
-  }
+//   // hozirgi vaqtni olish uchun yordamchi metod
+//   getTime() {
+//     const now = new Date();
+//     const hour = String(now.getHours()).padStart(2, '0');
+//     const minute = String(now.getMinutes()).padStart(2, '0');
+//     //return ${}:${minute};
+//   }
 
-  qoldiq() {
-    console.log(
-      Hozir ${this.getTime()}da ${this.apple}ta apple, ${this.apricot}ta apricot va ${this.cherry}ta cherry mavjud
-    );
-  }
+//   qoldiq() {
+//     console.log(`
+//    ${this.getTime()}da ${this.apple}ta apple, ${this.apricot}ta apricot va ${this.cherry}ta cherry mavjud
+//     `);
+//   }
 
-  sotish(nomi, soni) {
-    if (!this[nomi]) {
-      console.log(`Bunday mahsulot mavjud emas`);
-      return;
-    }
+//   sotish(nomi, soni) {
+//     if (!this[nomi]) {
+//       console.log(`Bunday mahsulot mavjud emas`);
+//       return;
+//     }
 
-    if (this[nomi] < soni) {
-      console.log(`Yetarli ${nomi} yoq`);
-      return;
-    }
+//     if (this[nomi] < soni) {
+//       console.log(`Yetarli ${nomi} yoq`);
+//       return;
+//     }
 
-    this[nomi] -= soni;
-    console.log(`${this.getTime()}da ${soni}ta ${nomi} sotildi`);
-  }
+//     this[nomi] -= soni;
+//     console.log(`${this.getTime()}da ${soni}ta ${nomi} sotildi`);
+//   }
 
-  qabul(nomi, soni) {
-    if (!this[nomi]) {
-      console.log(`Bunday mahsulot mavjud emas`);
-      return;
-    }
+//   qabul(nomi, soni) {
+//     if (!this[nomi]) {
+//       console.log(`Bunday mahsulot mavjud emas`);
+//       return;
+//     }
 
-    this[nomi] += soni;
-    console.log(`${this.getTime()}da ${soni}ta ${nomi} qabul qilindi`);
-  }
-}
+//     this[nomi] += soni;
+//     console.log(`${this.getTime()}da ${soni}ta ${nomi} qabul qilindi`);
+//   }
+// }
 
 
 
