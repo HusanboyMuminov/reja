@@ -59,9 +59,23 @@ res.json(data.ops[0]);
      const id = req.body.id;
     // console.log(id);
      //res.end("done");
-     db.collection("plans").deleteOne({_id: new mongodb.ObjectId(id)}, function(err, data) {
-        res.json({state: "success"})
-     })
+     db.collection("plans").deleteOne({_id: new mongodb.ObjectId(id)},
+    function(err, data) {
+        res.json({state: "success"});
+     });
+    });
+
+    app.post("/edit-item", (req, res) => {
+        const data = req.body;
+        console.log(data);
+        db.collection("plans").findOneAndUpdate(
+            {_id: new mongodb.ObjectId(data.id)},
+         {$set: {reja: data.new_input}}, 
+        function (err, data) {
+            res.json({ state: "success"});
+        }); //data objectni mongo object idga aylantirib olyapmiz
+       // res.end("done");
+
     });
     // res.json({"success" }); websitega ITni o'rganamiz dib yozsek, terminalda shu gap ko'rinadi
 //}): //bu res.json shaklda ma'lumotni qaytarib yuboradi bizga
@@ -69,6 +83,14 @@ res.json(data.ops[0]);
 // app.get('/author', (req, res) => {
 //     res.render("author", { user: user });
 // });
+
+app.post("/delete-all", (req,res) => {
+    if(req.body.delete_all) {
+        db.collection("plans").deleteMany(function(){
+            res.json({state: "hamma rejalar ochirildi"});
+        });
+    }
+});
 
 app.get("/", function (req, res) {// get> datani olish u-n, o'qish u-n
     console.log('user entered /'); //har bir APIga borganda shuni korsatadi

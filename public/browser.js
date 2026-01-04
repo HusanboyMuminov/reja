@@ -4,7 +4,7 @@ function itemTemplate(item) {
         <span class="item-text">${item.reja}</span>
         <div>
           <button 
-          data-id="${item._id}" 
+          data-id="${item._id}" lm 
           class="edit-me btn btn-secondary btn-sm mr-1">
             O'zgartirish
           </button>
@@ -51,14 +51,41 @@ document.addEventListener("click", function (e) {
             console.log(response.data);
             e.target.parentElement.parentElement.remove();
         })
-        .catch((err) => {});
-
+        .catch((err) => {
+         console.log("Iltimos qaytadan harakat qiling!");
+           });
 
         }
     }
      
     //edit oper
      if (e.target.classList.contains("edit-me")) {
-        alert("siz edit tugmasini bosdingiz");
+      // let userInput = prompt("O'zgartirish kiriting", "istalgan narsa yoziladi"); //o'zgartirish kiritish u-n, yozgan qiymatni inspect consoleda ko'rishimiz m-n, davomidagi qismga o'zgartirish tugmasi bosilganda shu so'zla chiqib turishi uchun qiymat yoziladi 
+       let userInput = prompt("O'zgartirish kiriting", 
+        e.target.parentElement.parentElement.querySelector(".item-text").innerHTML
+    );// buni kiritish orqali o'zgartirish linyaga yozilgan so'zni o'zini olib beradi
+      if (userInput) {
+        axios.post("/edit-item", {
+            id: e.target.getAttribute("data-id"),
+            new_input: userInput, 
+        }) //bu qism data objectimiz hisoblanadi 
+        .then(response => {
+          console.log(response.data); //bu yerda o'zgartirish u-n mantiq yozganimizda click bossak, terminalda korinadi yangi yozilgan matn
+           e.target.parentElement.parentElement.querySelector(
+           ".item-text"
+           ).innerHTML = userInput; // commentga olgan paytda,eski nomdagi rejani yangi rejaga almashtirmagan hisoblanamiz, va inspect consoleda success ko'ringani bilan webpageda data yangilanmaydi, bu qism ishga tushsa yangilanishni boshlaydi
+        })
+        .catch((err) => {
+           console.log("Iltimos qaytadan harakat qiling!");
+       });
     }
-})
+   }
+});
+
+document.getElementById("clean-all").addEventListener("click", function (){
+    axios.post("/delete-all", {delete_all: true }).then(response => {
+        //console.log(response.data);
+        alert(response.data.state);
+        document.location.reload();
+    })
+});
