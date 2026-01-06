@@ -1,6 +1,6 @@
 console.log("Web Serverni boshlash");
 const express = require("express");
-const res = require("express/lib/response");
+//const res = require("express/lib/response");
 const app = express();
 //const http = require("http"); //server.js ga ko'chirib olamiz bu qismniyam
 //const fs = require("fs"); // fs>core moduleligi sababli chaqirish shartmas
