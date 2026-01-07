@@ -1,22 +1,73 @@
-//task D
-
-function checkContent(a, b) {
-  if (a.length !== b.length) return false;
-
-  const name1 = a.split('').sort().join('');
-  const name2 = b.split('').sort().join('');
-
-  return name1 === name2;//
+//Task D
+function getReverse(word) {
+  return word.split('').reverse().join('');
 }
 
-//checkContent("mimunov", "muminov"); // true
-//checkContent("hello", "ollhe");       // true
-//checkContent("hello", "world");       // false
+console.log(getReverse("salom")); // "molas"
+console.log(getReverse("house")); // "esuoh"
+
+ //1. split('') → stringni harflarga ajratadi
+ //2. reverse() → harflarni teskari qiladi
+ //3. join('') → yana stringga aylantiradi
 
 
 
-console.log(checkContent("muminov","mimunov"));
-console.log(checkContent("game","ggame"));
+
+
+
+
+
+
+
+//callback function example for me!
+// function giveAdvice (a, callback) {
+//   if (typeof a !== 'string') { callback("insert a word", null); 
+//   } else {
+//      callback (null, "Your word is:" + a);
+// } }
+// giveAdvice ("hello", (err, thing) => {
+//   if (err) {console.log("error:", err);
+//   } else {
+//   console.log("javob:", thing);
+//   }
+// });
+
+
+
+
+
+
+
+
+
+
+//task D
+
+// function checkContent(a, b) {
+//   if (a.length !== b.length) return false;
+
+//   const name1 = a.split('').sort().join('');
+//   const name2 = b.split('').sort().join('');
+
+//   return name1 === name2;//
+// }
+
+// //checkContent("mimunov", "muminov"); // true
+// //checkContent("hello", "ollhe");       // true
+// //checkContent("hello", "world");       // false
+
+
+
+// console.log(checkContent("muminov","mimunov"));//true
+// console.log(checkContent("game","ggame")); //false
+
+
+
+
+
+
+
+
 
 
 
@@ -38,9 +89,9 @@ console.log(checkContent("game","ggame"));
 //   // hozirgi vaqtni olish uchun yordamchi metod
 //   getTime() {
 //     const now = new Date();
-//     const hour = String(now.getHours()).padStart(2, '0');
-//     const minute = String(now.getMinutes()).padStart(2, '0');
-//     //return ${}:${minute};
+//     const h = String(now.getHours()).padStart(2, '0');
+//     const m = String(now.getMinutes()).padStart(2, '0');
+//     return ${h} : ${m};
 //   }
 
 //   qoldiq() {
@@ -75,7 +126,7 @@ console.log(checkContent("game","ggame"));
 //   }
 // }
 
-
+// console.log("Fruits")
 
 
 
