@@ -1,10 +1,44 @@
-//Task D
-function getReverse(word) {
-  return word.split('').reverse().join('');
+//Task F
+
+function findDoublers(word) {
+  for (let i = 0; i < word.length; i++) {
+    if (word[i] === word[i + 1]) {
+      return true;
+    }
+  }
+  return false;
 }
 
-console.log(getReverse("salom")); // "molas"
-console.log(getReverse("house")); // "esuoh"
+// Test
+console.log(findDoublers("assume")); // true
+console.log(findDoublers("snack")); // false
+console.log(findDoublers("laptop")); //false
+console.log(findDoublers("Loop")); //true
+
+
+function karraJadval(count) {
+  for (let i = 0; i < count.length; i++) {
+    if (count[i] === count[i+1]) {
+      return true;
+    }
+  }
+  return false;
+}
+
+console.log(karraJadval("lusso")) //true
+
+
+
+
+
+
+// //Task E
+// function getReverse(word) {
+//   return word.split('').reverse().join('');
+// }
+
+// console.log(getReverse("salom")); // "molas"
+// console.log(getReverse("house")); // "esuoh"
 
  //1. split('') → stringni harflarga ajratadi
  //2. reverse() → harflarni teskari qiladi
